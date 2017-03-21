@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--使用angular的时候需要指定angular的作用范围-->
+<html lang="en" ng-app>
+<head>
+    <meta charset="UTF-8">
+    <title>angular中的全局变量</title>
+
+</head>
+<body>
+
+<!--ng-model一般配合表单input标签一起使用-->
+<input type="text" ng-model="name">
+<p>{{name}}</p>
+<p>{{name}}</p>
+
+</body>
+<script src="angular.js"></script>
+<script>
+    /**
+     * 当引入angular.js文件后，会自动生成一个全局变量angular
+     * 通过angular可以创建模块(angular一切从模块开始)
+     *      通过模块：控制器, 自定义服务, 指令....
+     * */
+    console.log(angular);
+</script>
+</html>
