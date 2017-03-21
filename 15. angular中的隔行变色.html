@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--使用angular的时候需要指定angular的作用范围-->
+<html lang="en" ng-app>
+<head>
+    <meta charset="UTF-8">
+    <title>angular中的全局变量</title>
+    <style>
+        .sty1{
+            background: yellow;
+        }
+        .sty2{
+            background: red;
+        }
+    </style>
+    <link rel="stylesheet" href="bootstrap.css">
+</head>
+<body>
+<!--练习: 实现隔行变色效果, 遍历数组phones=['小米', '苹果', '华为', '小米', '苹果', '华为', '小米', '苹果', '华为'], 创建两种背景色样式, 实现隔行变色(用两种方法)-->
+<ul ng-init="phones=['小米', '苹果', '华为', '小米', '苹果', '华为', '小米', '苹果', '华为']">
+    <!--<li ng-repeat="phone in phones track by $index" ng-class="{'sty1': $even, 'sty2': $odd}">{{phone}}</li>-->
+    <!--<li ng-repeat="phone in phones track by $index" ng-class="{true: 'sty1', false: 'sty2'}[$odd]">{{phone}}</li>-->
+    <li ng-repeat="phone in phones track by $index" ng-style="$odd?{background: 'red'}:{background: 'yellow'}">{{phone}}</li>
+</ul>
+
+</body>
+<script src="angular.js"></script>
+<script>
+</script>
+</html>
