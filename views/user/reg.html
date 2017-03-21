@@ -1,0 +1,35 @@
+<%-include ../include/header.html%>
+<div class="container" style="width:400px;margin:auto;background:lightblue;padding:20px;border-radius:8px;">
+	<form class="form-horizontal" action="/users/reg" method="post">
+   <div class="form-group">
+      <label for="firstname" class="col-sm-2 control-label">名字</label>
+      <div class="col-sm-10">
+         <input type="text" class="form-control" id="firstname" 
+             name="username">
+      </div>
+   </div>
+   <div class="form-group">
+      <label for="lastname" class="col-sm-2 control-label">Email</label>
+      <div class="col-sm-10">
+         <input type="email" class="form-control" id="lastname" 
+             name="email">
+      </div>
+   </div>
+   <div class="form-group">
+      <label for="addr" class="col-sm-2 control-label">地址</label>
+      <div class="col-sm-10">
+         <input type="text" class="form-control" id="addr" 
+            name="addr">
+      </div>
+   </div>
+   <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+         <button type="submit" class="btn btn-block btn-success"><b>注&nbsp;&nbsp;&nbsp;册</b></button>
+      </div>
+   </div>
+</form>
+</div>
+
+<%-include ../include/footer.html%>
+
+

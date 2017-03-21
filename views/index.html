@@ -1,0 +1,61 @@
+<%-include include/header.html%>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<%article.forEach(function(article,index){%>
+			<div class="col-sm-6 col-md-3">
+				<div class="thumbnail">
+					<%if(article.poster){%>
+					<a href="/detail?details=<%=article._id%>"><img src="<%=article.poster%>"alt="通用的占位符缩略图" style="height:200px;"></a>
+					<%}%>					
+				</div>
+				<div class="caption">
+					<div class="media">
+						<a class="pull-left"href="">
+							<img class="media-object"src="<%=article.user.avatar%>" alt="" />
+						</a>
+						<div class="media-body" >
+							<a href="/detail?details=<%=article._id%>"><h4 class="media-heading"><%=article.title%></h4></a>
+							<div style="height:25px;overflow:hidden;line-height:28px;" title="<%-article.content%>">
+								<%-article.content%>
+							</div>
+						</div>
+					</div>
+					<p><span>作者&nbsp;/&nbsp;<%=article.user.username%></span><span class="pull-right"><%=article.createAt.toLocaleString()%></span></p>
+					<p>
+						<a href="/praise?pointer=<%=article._id%>" class="btn btn-success btn-xs">
+							点赞&nbsp;( <b style="color:#e4393c"><%=article.pointer%></b>)
+						</a>
+						<a href="/review?id=<%=article._id%>" class="btn btn-info btn-xs">
+							&nbsp;评论&nbsp;
+						</a>
+					</p>
+				</div>
+			</div>
+			<%})%>
+		</div>
+	</div>
+	<div class="row">
+		<div class="com-md-12">
+			<ul class="pagination clearfix"style="position:relative;left:45%">
+				<li>
+				    <a href="/?keyword=<%=keyword%>&pageNum=<%=(pageNum>1?pageNum-1:1)%>&pageSize=<%=pageSize%>" aria-label="Previous">
+				        <span aria-hidden="true">&laquo;</span>
+				    </a>
+				</li>
+				<%for (var i=1; i<=totalPage; i++){%>
+				   <li class="<%=((pageNum==i) ? 'active': '')%>"><a href="/?keyword=<%=keyword%>&pageNum=<%=i%>&pageSize=<%=pageSize%>"><%=i%></a></li>
+				<%}%>
+				
+				<li>
+				    <a href="/?keyword=<%=keyword%>&pageNum=<%=(pageNum<totalPage?pageNum+1:totalPage)%>&pageSize=<%=pageSize%>" aria-label="Next">
+				        <span aria-hidden="true">&raquo;</span>
+				   </a>
+				</li>
+		    </ul>
+		</div>
+	</div>
+	
+</div>
+
+<%-include include/footer.html%>		

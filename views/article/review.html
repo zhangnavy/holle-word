@@ -1,0 +1,62 @@
+<%-include ../include/header.html%>
+<div class="container">
+    <div class="col-md-2">
+        
+    </div>
+    <div class="col-md-8">
+
+		<div class="row">
+			<div class="col-md-12">				
+				<div class="thumbnail">
+					<%if(article.poster){%>
+					<a href=""><img src="<%=article.poster%>"alt="通用的占位符缩略图" style="height:450px;"></a>
+					<%}%>					
+				</div>
+				<div class="caption">
+					<div class="media">
+						<a class="pull-left"href="">
+							<img class="media-object"src="<%=article.user.avatar%>" alt="" />
+						</a>
+						<div class="media-body" >
+							<a href=""><h4 class="media-heading"><%=article.title%></h4></a>
+							<div style="height:25px;overflow:hidden;line-height:28px;" title="<%-article.content%>">
+								<%-article.content%>
+							</div>
+						</div>
+					</div>
+					<p><span>作者&nbsp;/&nbsp;<%=article.user.username%></span><span class="pull-right"><%=article.createAt.toLocaleString()%></span></p>
+					
+				</div>
+				<form action="/review" method="post">
+					
+					<p>
+						<a href="" class="btn btn-info btn-xs">
+							评论&nbsp; (<b style="color:#e4393c"><%=article.comment%></b>)
+					    </a>
+					</p>
+					<textarea name="content" rows="5" cols="100%"></textarea>
+					<input type="hidden" name="id" id="id" value="<%=article._id%>" />
+					<input type="submit" value="发&nbsp;&nbsp;&nbsp;&nbsp;表"class="btn btn-primary btn-xs"/>
+				</form>
+				<div class="">
+					
+				</div>
+			</div>
+		</div>
+
+    </div>
+    <div class="col-md-2">
+        <p style="background:#E0E0E0;height:40px;line-height:40px;text-indent:10px;
+        color:#262626;border-radius:5px"><b>共有（<span style="color:#e4393c;"><%=totalReview%></span>）条评论</b></p>
+		<ul class="list-group">
+			<%review.forEach(function(rev,index){%>
+			<li class="list-group-item">
+				<p><span>评论者&nbsp;/&nbsp;<%=rev.name%></span></p>
+				<div><%=rev.content%></div>
+			</li>
+			<%})%>
+
+		</ul>
+    </div>
+</div>
+<%-include ../include/footer.html%>
